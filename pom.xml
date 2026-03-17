@@ -28,7 +28,7 @@
     </scm>
     <properties>
         <java.version>21</java.version>
-        <mybatis-plus.version>3.4.3.4</mybatis-plus.version>
+        <mybatis-plus.version>3.5.14</mybatis-plus.version>
         <mysql-connector.version>8.3.0</mysql-connector.version>
         <jjwt.version>0.12.6</jjwt.version>
     </properties>
@@ -42,7 +42,7 @@
         <!-- 2. MyBatis-Plus (含MyBatis和JDBC) -->
         <dependency>
             <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
             <version>${mybatis-plus.version}</version>
         </dependency>
 
@@ -54,11 +54,11 @@
             <scope>runtime</scope>
         </dependency>
 
-<!--        &lt;!&ndash; 4. Spring Security (用于BCrypt密码加密)  &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-security</artifactId>-->
-<!--        </dependency>-->
+        <!-- 4. Spring Security (用于BCrypt密码加密)  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
 
         <!-- 5. JWT依赖  -->
         <dependency>

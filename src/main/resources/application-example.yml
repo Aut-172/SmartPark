@@ -22,5 +22,6 @@ spring:
 
   # JWT??
   jwt:
-    secret: your-secret-key-must-be-at-least-32-chars-long  # ??
-    expiration: 86400000  # ?????????24??
+    key: your-secret-key-must-be-at-least-32-chars-long  # ??
+    ttl: 86400000
+    issuer: your-name

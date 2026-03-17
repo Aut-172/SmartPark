@@ -8,6 +8,8 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+
+
 @SpringBootTest
 class SmartParkApplicationTests {
 
@@ -24,5 +26,6 @@ class SmartParkApplicationTests {
             System.out.println("数据库连接成功：" + conn.getCatalog());
         }
     }
+
 
 }
