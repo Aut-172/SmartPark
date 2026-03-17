@@ -46,6 +46,14 @@
             <version>${mybatis-plus.version}</version>
         </dependency>
 
+        <!-- 2.1 Mybatis-Plus 分页依赖 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-jsqlparser</artifactId>
+            <version>${mybatis-plus.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
         <!-- 3. MySQL驱动  -->
         <dependency>
             <groupId>com.mysql</groupId>
