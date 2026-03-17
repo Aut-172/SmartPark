@@ -89,4 +89,20 @@ public class ParkingLotController {
             return Response.error(e.getMessage());
         }
     }
+
+    /**
+     * 搜索停车场（按名称或地址模糊查询）
+     * @param keyword  搜索关键字（必填）
+     * @param pageNum  页码，默认1
+     * @param pageSize 每页条数，默认10
+     * @return 分页结果
+     */
+    @GetMapping("/search")
+    public Response<IPage<ParkingLot>> searchParkingLots(
+            @RequestParam String keyword,
+            @RequestParam(defaultValue = "1") int pageNum,
+            @RequestParam(defaultValue = "10") int pageSize) {
+        IPage<ParkingLot> page = parkingLotService.searchParkingLots(keyword, pageNum, pageSize);
+        return Response.success(page);
+    }
 }

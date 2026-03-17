@@ -43,4 +43,13 @@ public interface IParkingLotService extends IService<ParkingLot> {
      * @return 更新后的对象
      */
     ParkingLot increaseAvailableSpaces(Long id, int increment);
+
+    /**
+     * 按关键字搜索停车场（名称或地址模糊匹配）
+     * @param keyword  搜索关键字
+     * @param pageNum  页码
+     * @param pageSize 每页大小
+     * @return 分页数据
+     */
+    IPage<ParkingLot> searchParkingLots(String keyword, int pageNum, int pageSize);
 }

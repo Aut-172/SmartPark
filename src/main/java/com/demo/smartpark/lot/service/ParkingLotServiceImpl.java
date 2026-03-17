@@ -8,6 +8,7 @@ import com.demo.smartpark.lot.entity.ParkingLot;
 import com.demo.smartpark.lot.mapper.ParkingLotMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 @Service
 public class ParkingLotServiceImpl extends ServiceImpl<ParkingLotMapper,ParkingLot> implements IParkingLotService{
@@ -91,5 +92,16 @@ public class ParkingLotServiceImpl extends ServiceImpl<ParkingLotMapper,ParkingL
         lot.setAvailableSpaces(newSpaces);
         updateById(lot);  // 乐观锁自动处理 version
         return lot;
+    }
+
+    @Override
+    public IPage<ParkingLot> searchParkingLots(String keyword, int pageNum, int pageSize) {
+        Page<ParkingLot> page = new Page<>(pageNum, pageSize);
+        boolean hasKeyword = StringUtils.hasText(keyword);
+        return lambdaQuery()
+                .like(hasKeyword, ParkingLot::getName, keyword)
+                .or(hasKeyword, w -> w.like(ParkingLot::getAddress, keyword))
+                .orderByDesc(ParkingLot::getCreateTime)
+                .page(page);
     }
 }
