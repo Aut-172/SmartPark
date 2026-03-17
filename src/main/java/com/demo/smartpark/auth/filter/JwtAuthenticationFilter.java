@@ -80,9 +80,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
         }
 
-        // 使用手机号作为认证主体的名称（手机号唯一）
+        // 使用ID作为认证主体的名称
         UsernamePasswordAuthenticationToken authentication =
-                new UsernamePasswordAuthenticationToken(loginUser.getPhone(), null, authorities);
+                new UsernamePasswordAuthenticationToken(loginUser.getId(), null, authorities);
         SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 }

@@ -1,4 +1,4 @@
-package com.demo.smartpark.parking.entity;
+package com.demo.smartpark.lot.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;

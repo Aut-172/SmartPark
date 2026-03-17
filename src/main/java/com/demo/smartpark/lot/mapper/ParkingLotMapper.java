@@ -1,7 +1,7 @@
-package com.demo.smartpark.parking.mapper;
+package com.demo.smartpark.lot.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.demo.smartpark.parking.entity.ParkingLot;
+import com.demo.smartpark.lot.entity.ParkingLot;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
