@@ -2,8 +2,8 @@ package com.demo.smartpark.auth.controller;
 
 import com.demo.smartpark.auth.dto.LoginRequest;
 import com.demo.smartpark.auth.dto.RegisterRequest;
-import com.demo.smartpark.common.JsonUtils;
 import com.demo.smartpark.common.JwtUtils;
+import com.demo.smartpark.common.RedisUtil;
 import com.demo.smartpark.common.Response;
 import com.demo.smartpark.user.entity.User;
 import com.demo.smartpark.user.service.IUserService;
@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/auth")
@@ -46,7 +43,7 @@ public class AuthController {
 
         // 3. 构建 JWT 负载（仅包含必要信息，避免敏感字段）
 
-        String token = JwtUtils.createUserJWT(user);
+        String  token = JwtUtils.createUserJWT(user);
 
         // 4. 返回 token
         return Response.success(token);
@@ -62,7 +59,8 @@ public class AuthController {
         try {
             // 调用 Service 执行注册
             User user = userService.register(registerRequest);
-            return Response.success("注册成功",JwtUtils.createUserJWT(user));
+            String token = JwtUtils.createUserJWT(user);
+            return Response.success("注册成功",token);
         } catch (IllegalArgumentException e) {
             // 业务逻辑异常（如手机号已存在）
             return Response.error(e.getMessage());

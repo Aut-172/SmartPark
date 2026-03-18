@@ -2,7 +2,7 @@ spring:
   application:
     name: SmartPark
   datasource:
-    url: jdbc:mysql://localhost:3306/smart_park?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/smart_park useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: your-username
     password: your-password
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -11,17 +11,29 @@ spring:
       date-format: yyyy-MM-dd HH:mm:ss
       time-zone: GMT+8
 
-  # MyBatis-Plus??
+  # MyBatis-Plus  
   mybatis-plus:
     configuration:
-      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # ?????SQL??
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #      SQL  
     global-config:
       db-config:
-        logic-delete-field: deleted # ????????
-        id-type: auto # ????
-
-  # JWT??
-  jwt:
-    key: your-secret-key-must-be-at-least-32-chars-long  # ??
-    ttl: 86400000
-    issuer: your-name
+        logic-delete-field: deleted #         
+        id-type: auto #     
+  
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: your-password     # 密码
+      database: 0          # 默认数据库索引
+      lettuce:
+        pool:
+          max-active: 8    # 连接池最大连接数
+          max-idle: 8      # 最大空闲连接
+          min-idle: 0      # 最小空闲连接
+          max-wait: -1ms   # 获取连接最大等待时间（-1表示无限）
+# JWT
+jwt:
+  key: your-secret-key  #
+  ttl: 86400000  # 
+  issuer: SmartPark
